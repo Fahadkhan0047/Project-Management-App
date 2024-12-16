@@ -14,7 +14,7 @@ import { getTeams } from "./controllers/teamController";
 
 // / CONFIGURATIONS
 dotenv.config();
-const port = process.env.PORT || 3000
+
 const app = express();
 app.use(express.json());
 app.use(helmet());
@@ -52,6 +52,7 @@ app.use("/users",getUsers)
 app.use("/teams",getTeams)
 
 // Start Server
-app.listen(port, () => {
+const port = Number(process.env.PORT) || 3000
+app.listen(port,"0.0.0.0", () => {
   console.log(`Server is running on port ${port}`);
 });
